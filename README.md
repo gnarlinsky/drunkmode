@@ -1,5 +1,5 @@
 # *DRAFT*:
-Custom UNIX commands to enable or disable "drunk mode."
+Custom UNIX (Bash) commands to enable or disable "drunk mode."
 
 **No guarantees on anything! Use at your own risk! This is beta!**
 

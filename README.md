@@ -7,7 +7,8 @@ consumption!**
 * **`drunkmodeon` and `drunkmodeoff` use `exec bash` as a dirty
 workaround for the fact that changes to environment variables that happen
 during the execution of a script will not persist in the calling process's
-environment. This is potentially problematic, since this puts you in a new
+environment. Since this puts you in a new shell, it's potentially problematic
+(e.g. leaving your virtualenv, original shell's history unavailable,...).
 shell. See http://stackoverflow.com/a/497479, particularly the associated
 discussion.**
 * Also note I make a number of assumptions about directory structures and such.
@@ -21,7 +22,6 @@ drunkmode to get extra prompts and warnings when carrying out the more
 ## Affected commands
 
 ## Setting up:
-change)
 * adding source command to bashrc (note: NOT bash_profile, since that is not
 sourced when `exec bash`ing)
 ``` bash

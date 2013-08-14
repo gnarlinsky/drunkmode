@@ -21,7 +21,6 @@ drunkmode to get extra prompts and warnings when carrying out the more
 ## Affected commands
 
 ## Setting up:
-change)
 * adding source command to bashrc (note: NOT bash_profile, since that is not
 sourced when `exec bash`ing)
 ``` bash

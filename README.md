@@ -18,6 +18,7 @@ drunkmode to get extra prompts and warnings when carrying out the more
 "dangerous" commands or actions.
 
 ## Affected commands
+* Currently, `rm`
 
 ## Setting up:
 * adding source command to bashrc (note: NOT bash_profile, since that is not

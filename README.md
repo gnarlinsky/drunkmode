@@ -14,12 +14,12 @@ discussion.**
 * Also note I make a number of assumptions about directory structures and such.
 
 ## General idea
-Ever accidentally `rm *`'d something you shouldn't have because you were a
-little inebriated (or very tired or extra stupid or what have you)?  Turn on
+Ever accidentally `rm *`'d because you were a little inebriated (or very tired or extra stupid or what have you)?  Turn on
 drunkmode to get extra prompts and warnings when carrying out the more
 "dangerous" commands or actions.
 
 ## Affected commands
+* Currently, `rm`
 
 ## Setting up:
 * adding source command to bashrc (note: NOT bash_profile, since that is not
@@ -69,4 +69,5 @@ sufficient-->
 * additional commands to change
 * automate set up process
 * `exec bash` thing... but that would necessitate an entire overhaul, probly
+* generate random strings to type out, rather than the same ones each time
 * see Issues

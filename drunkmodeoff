@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# set DRUNKMODE env variable in .drunkmoderc
+echo 'export DRUNKMODE=0' > ~/.drunkmoderc
+
+# (won't be reflected in parent process anyway)
+#source ~/.drunkmoderc
+
+# Check if the environment variable is actually correctly set to off (but still
+# actually for THIS process, not calling process)
+[ $DRUNKMODE==0 ] && echo 'Drunkmode OFF' || echo 'No, something went wrong! Drunkmode is ON.' 
+
+# Note: dirty/problematic trick to source to set the DRUNKMODE env variable in
+# the calling shell.
+exec bash
+

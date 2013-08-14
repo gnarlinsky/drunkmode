@@ -68,4 +68,5 @@ sufficient-->
 * additional commands to change
 * automate set up process
 * `exec bash` thing... but that would necessitate an entire overhaul, probly
+* generate random strings to type out, rather than the same ones each time
 * see Issues

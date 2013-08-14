@@ -1,64 +1,21 @@
-#!/usr/bin/env bash 
+#!/usr/bin/env bash
 
+export DRUNKMODE=1
 
-##############
-# TODO: delete colors not using later
-##############
-GRAY="\[\033[0;30m\]"
-_LIGHT_GRAY_="\[\033[1;37m\]"
-_LIGHT_GREEN_="\[\033[0;32m\]"                                                     
-_LIGHT_CYAN_="\[\033[0;36m\]"                                                      
-_LIGHT_RED_="\[\033[0;31m\]"
-_LIGHT_BROWN_="\[\033[0;33m\]"                                                     
-_LIGHT_PURPLE_="\[\033[0;35m\]"                                                    
-_BLACK_ON_GRAY_="\[\033[0;47;30m\]"                                                
-_BLACK_ON_CYAN_="\[\033[0;46;30m\]"                                                
-_LIGHT_CYAN_ON_CYAN_="\[\033[0;46;36m\]"                                           
-_GRAY_ON_CYAN_="\[\033[0;46;36m\]"
-_LIGHT_CYAN_ON_GRAY_="\[\033[0;47;36m\]"                                           
-_LIGHT_PURPLE_ON_GRAY_="\[\033[0;47;35m\]"                                         
-_LIGHT_BLUE_ON_GRAY_="\[\033[0;47;34m\]"                                           
-_LIGHT_RED_ON_GRAY_="\[\033[0;47;31m\]"                                            
-_LIGHT_GREEN_ON_GRAY_="\[\033[0;47;32m\]"                                          
-_NO_COLOR_="\[\033[0m\]"
+# Set DRUNKMODE env variable on
+echo 'export DRUNKMODE=1' > ~/.drunkmoderc
 
-###########################################
-# color variables
-###########################################
-_LIGHT_RED_="\033[0;31m"
-_LIGHT_CYAN_="\033[0;36m"
-_NO_COLOR_="\033[0m"
+# Write the new safer command replacements to drunkmoderc
+cat ~/.drunk_commands >> ~/.drunkmoderc
 
-###########################################
-# rm drunkmode: ask "are you sure?" twice
-###########################################
-alias rm='drunk_rm'
-function drunk_rm() {
-    # First verification
-    are_you_sure1="Are you sure you want to delete "
-    are_you_sure2="??? Type 'YES I AM'"
-    # Note: colors won't work (escape sequences not recognized) without '-e'
-    # option for echo.
-    echo -ne "$_LIGHT_CYAN_$are_you_sure1$_LIGHT_RED_$*$_LIGHT_CYAN_$are_you_sure2$_NO_COLOR_ "
-    read answer1
-    if [ "$answer1" == "YES I AM" ]
-    then # Second verification
-        are_you_sure1="Are you REALLY sure you want to delete "
-        are_you_sure2="??? Type 'YES ALREADY!'"
-        echo -ne "$_LIGHT_CYAN_$are_you_sure1$_LIGHT_RED_$*$_LIGHT_CYAN_$are_you_sure2$_NO_COLOR_ "
-        read answer2
-        if [ "$answer2" == "YES ALREADY!" ]
-        then
-            # explicitly use the builtin rm, or will keep asking!
-            /bin/rm $*;
-            status_message="OK, $* deleted."
-        else
-            status_message="Nothing deleted."
-            #echo -e "$_LIGHT_CYAN_$message$_NO_COLOR_! "
-        fi
-    else
-        status_message="Nothing deleted."
-    fi
-    # say whether deleted or not
-    echo -e "$_LIGHT_CYAN_$status_message$_NO_COLOR_"
-}
+# (won't be reflected in parent process anyway)
+#source ~/.drunkmoderc
+
+# Check if the environment variable is actually correctly set to on (but still
+# actually for this process, not parent)
+[ $DRUNKMODE==1 ] && echo 'Drunkmode ON' || echo 'No, something went wrong! Drunkmode is OFF!'
+
+# Note: dirty/problematic trick to source to set the DRUNKMODE env variable in  
+# the calling shell.
+exec bash
+

@@ -3,14 +3,14 @@ Custom UNIX (Bash) commands to enable or disable "drunk mode."
 
 ## CAUTION! Danger!
 * **No guarantees on anything! Use at your own risk!!! Not for public
-consumption!**
-* **`drunkmodeon` and `drunkmodeoff` use `exec bash` as a dirty
+consumption without reflection!**
+* *`drunkmodeon` and `drunkmodeoff` use `exec bash` as a dirty
 workaround for the fact that changes to environment variables that happen
 during the execution of a script will not persist in the calling process's
 environment. Since this puts you in a new shell, it's potentially problematic
 (e.g. leaving your virtualenv, original shell's history unavailable,...).
-shell. See http://stackoverflow.com/a/497479, particularly the associated
-discussion.**
+See http://stackoverflow.com/a/497479, particularly the associated
+discussion.*
 * Also note I make a number of assumptions about directory structures and such.
 
 ## General idea
@@ -33,7 +33,7 @@ source ~/.drunkmoderc
 
 * copying or linking commands to usr/bin/ (assuming that's in your PATH)
 ``` bash
-blah
+(todo)
 ```
 * copying or linking .drunk_commands to home dir from this directory
 ``` bash
@@ -58,7 +58,7 @@ $ drunkmodeoff
 ```
 
 ## Examples/see it in action
-(Insert screenshots to show colors, or colorize the text)
+(todo)
 
 <!--
 ## How it works
@@ -68,6 +68,6 @@ sufficient-->
 ## Future/wishlist
 * additional commands to change
 * automate set up process
-* `exec bash` thing... but that would necessitate an entire overhaul, probly
+* `exec bash` ... but that would necessitate an entire overhaul, probably
 * generate random strings to type out, rather than the same ones each time
 * see Issues

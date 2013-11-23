@@ -19,23 +19,27 @@ drunkmode to get extra prompts and warnings when carrying out the more
 "dangerous" commands or actions.
 
 ## Affected commands
-* Currently, `rm`
+* Currently, `rm` (including `rm -f`)
 
 ## Setting up:
-* adding source command to bashrc (note: NOT bash_profile, since that is not
+* create `.drunkmoderc` for the first time
+``` bash
+$ touch ~/.drunkmoderc
+```
+
+* add source command to your `.bashrc` (note: NOT `.bash_profile`, since that is not
 sourced when `exec bash`ing)
 ``` bash
-##
-# drunkmodeon and drunkmodeoff commands
-##
 source ~/.drunkmoderc
 ```
 
-* copying or linking commands to usr/bin/ (assuming that's in your PATH)
+* copy or link commands to `usr/bin/` (assuming that's in your PATH)
 ``` bash
-(todo)
+$ sudo ln -s ~/githubbed/drunkmode/drunkmodeo* /usr/bin/
 ```
-* copying or linking .drunk_commands to home dir from this directory
+You may have to precede the above command with `sudo`.
+
+* copy or link `drunk_commands` to home directory from this (cloned repo) directory
 ``` bash
 $ ln -s /path/to/currentdir/drunk_commands ~/.drunk_commands
 ```
@@ -44,8 +48,7 @@ or
 $ cp /path/to/currentdir/drunk_commands ~/.drunk_commands
 ```
 
-* note may have to change permissions for commands (`chmod +x`)
-* may automate this process later
+* Note: may have to change permissions for commands (`chmod +x`)
 
 ## Using it
 Turn drunkmode on
@@ -58,7 +61,8 @@ $ drunkmodeoff
 ```
 
 ## Examples/see it in action
-(todo)
+![screen shot 2013-11-23 at 10 04 42
+am](https://f.cloud.github.com/assets/4472418/1606777/fe41c914-5458-11e3-8fe3-6f8b3bedf46f.png)
 
 <!--
 ## How it works
@@ -66,7 +70,8 @@ how works/env variable, bashrc, etc, or maybe the WARNING at the top is
 sufficient-->
 
 ## Future/wishlist
-* additional commands to change
+* additional commands
+* option for user to define their own commands to put under drunkmode control
 * automate set up process
 * `exec bash` ... but that would necessitate an entire overhaul, probably
 * generate random strings to type out, rather than the same ones each time
